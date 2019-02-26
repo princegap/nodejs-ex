@@ -38,6 +38,12 @@ if (mongoURL == null) {
       }
     }
   }
+  
+  mongoHost = '127.0.0.1';
+  mongoPort = '27017';
+  mongoDatabase = 'sampledb';
+  mongoUser = 'mongouser';
+  mongoPassword = 'mongopassword';
 
   if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
