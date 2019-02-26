@@ -39,7 +39,7 @@ if (mongoURL == null) {
     }
   }
   
-  mongoHost = '127.0.0.1';
+  mongoHost = '172.31.55.56';
   mongoPort = '27017';
   mongoDatabase = 'sampledb';
   mongoUser = 'mongouser';
