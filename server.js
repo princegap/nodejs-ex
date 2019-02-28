@@ -96,17 +96,6 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
-var redis = require('redis');
-var client = redis.createClient('10.130.7.211','6379');
-
-client.on('connect', function() {
-    console.log('Redis client connected');
-});
-
-client.on('error', function (err) {
-    console.log('Something went wrong ' + err);
-});
-
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
