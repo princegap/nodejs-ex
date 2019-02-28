@@ -11,7 +11,8 @@
     "mocha": "^2.4.5",
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
-    "object-assign":"4.1.0"
+    "object-assign":"4.1.0",
+	"redis": "*"
   },
   "engine": {
     "node": "*",
@@ -23,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/sclorg/nodejs-ex.git"
+    "url": "http://github.com/princegap/nodejs-ex.git"
   },
-  "author": "Steve Speicher <sspeiche@gmail.com>",
-  "license": "CC-BY-1.0",
+  "author": "Prince Aiyathurai <PrinceA@hcl.com>",
+  "license": "NA",
   "bugs": {
-    "url": "http://github.com/sclorg/nodejs-ex/issues"
+    "url": "http://github.com/sclorg/princegap/issues"
   },
-  "homepage": "http://github.com/sclorg/nodejs-ex"
+  "homepage": "http://github.com/princegap/nodejs-ex"
 }
