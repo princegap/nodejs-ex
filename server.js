@@ -55,6 +55,18 @@ if (mongoURL == null) {
     mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
   }
 }
+
+var redis = require('redis');
+var client = redis.createClient('10.130.2.163','6379');
+
+client.on('connect', function() {
+    console.log('Redis client connected');
+});
+
+client.on('error', function (err) {
+    console.log('Something went wrong ' + err);
+});
+
 var db = null,
     dbDetails = new Object();
 
