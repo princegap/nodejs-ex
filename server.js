@@ -117,6 +117,19 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+app.get('/fetchdatafrommongo', function(req,res) {
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.counts.find({}).sort({ "_id" : -1 }).limit(30, function(err, docs) {
+	  response.end(JSON.stringify(docs));
+    });
+  } else {
+    res.send('{ pageCount: -1 }');
+  }
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
