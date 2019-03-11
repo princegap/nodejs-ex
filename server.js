@@ -123,7 +123,7 @@ app.get('/fetchdatafrommongo', function(req,res) {
   }
   if (db) {
     db.counts.find({}).sort({ "_id" : -1 }).limit(30, function(err, docs) {
-	  response.end(JSON.stringify(docs));
+	  res.send(JSON.stringify(docs));
     });
   } else {
     res.send('{ pageCount: -1 }');
