@@ -122,9 +122,8 @@ app.get('/fetchdatafrommongo', function(req,res) {
     initDb(function(err){});
   }
   if (db) {
-    db.counts.find({}).sort({ "_id" : -1 }).limit(30, function(err, docs) {
-	  res.send(JSON.stringify(docs));
-    });
+    db.collection('count').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
+    res.send(result);
   } else {
     res.send('{ pageCount: -1 }');
   }
