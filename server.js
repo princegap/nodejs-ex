@@ -122,8 +122,9 @@ app.get('/fetchdatafrommongo', function(req,res) {
     initDb(function(err){});
   }
   if (db) {
-    db.collection('count').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
-    res.send(result);
+    db.collection('counts').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
+      res.send('{Displaying the last 30 records:' + result + '}');
+	});
   } else {
     res.send('{ pageCount: -1 }');
   }
