@@ -90,7 +90,7 @@ app.get('/', function (req, res) {
   if (db) {
     var col = db.collection('counts');
     // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
+    col.insert({ip: req.ip, date: new Date().toISOString()});
     col.count(function(err, count){
       if (err) {
         console.log('Error running count. Message:\n'+err);
@@ -122,6 +122,9 @@ app.get('/fetchdatafrommongo', function(req,res) {
     initDb(function(err){});
   }
   if (db) {
+	db.collection('counts').count(function(err, count ){
+      res.send('{ pageCount: ' + count + '}');
+    });
     db.collection('counts').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
       res.json(result);
 	});
