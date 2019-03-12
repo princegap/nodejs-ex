@@ -232,7 +232,7 @@ pre {
                     <div class="code">
                       <table style='margin-left: 20px>
 					    <% for (var i=0; i < respData.length; i++) { %>
-					      <tr><td>Unique Id:</td><td><%= respData[i].id %></td></tr>
+					      <tr><td>Unique Id:</td><td><%= respData[i]._id %></td></tr>
                           <tr><td>IP Address:</td><td><%= respData[i].ip %></td></tr>
                           <tr><td>Date:</td><td><%= respData[i].date %></td></tr
 						<% }%>
