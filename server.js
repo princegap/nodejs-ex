@@ -102,6 +102,25 @@ app.get('/', function (req, res) {
   }
 });
 
+app.get('/fetchdata', function (req, res) {
+  // try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('counts');
+    col.count(function(err, count){
+      if (err) {
+        console.log('Error running count. Message:\n'+err);
+      }
+      res.render('data.html', { pageCountMessage : count, dbInfo: dbDetails });
+    });
+  } else {
+    res.render('data.html', { pageCountMessage : null});
+  }
+});
+
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
@@ -122,13 +141,9 @@ app.get('/fetchdatafrommongo', function(req,res) {
     initDb(function(err){});
   }
   if (db) {
-	db.collection('counts').count(function(err, count ){
-      res.write('{ pageCount: ' + count + '}');
-    });
     db.collection('counts').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
       res.json(result);
 	});
-	res.end();
   } else {
     res.send('{ pageCount: -1 }');
   }
