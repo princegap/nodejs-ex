@@ -123,11 +123,12 @@ app.get('/fetchdatafrommongo', function(req,res) {
   }
   if (db) {
 	db.collection('counts').count(function(err, count ){
-      var pageCountString = '{ pageCount: ' + count + '}';
+      res.write('{ pageCount: ' + count + '}');
     });
     db.collection('counts').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
-      res.json(pageCountString + result);
+      res.json(result);
 	});
+	res.end();
   } else {
     res.send('{ pageCount: -1 }');
   }
