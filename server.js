@@ -110,17 +110,17 @@ app.get('/fetchdata', function (req, res) {
   }
   if (db) {
     var col = db.collection('counts');
-	responseData = new Object();
-	db.collection('counts').find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
-      responseData = result;
-	});
-	
-    col.count(function(err, count){
+	var rowCount = 0;
+	col.count(function(err, count){
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('data.html', { pageCountMessage : count, dbInfo: dbDetails, respData: responseData });
+	  rowCount = count;
     });
+	col.find().limit(30).sort({'_id':-1}).toArray(function (err, result) {
+		console.log(result);
+      res.render('data.html', { pageCountMessage : rowCount, respData: result });
+	});
   } else {
     res.render('data.html', { pageCountMessage : null});
   }
