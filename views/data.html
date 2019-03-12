@@ -231,10 +231,9 @@ pre {
 				   <p>Last 30 Records in MongoDb:
                     <div class="code">
                       <table style='margin-left: 20px>
+						<tr><th>Unique Id</th><th>IP Address</th><th>Date</th>
 					    <% for (var i=0; i < respData.length; i++) { %>
-					      <tr><td>Unique Id:</td><td><%= respData[i]._id %></td></tr>
-                          <tr><td>IP Address:</td><td><%= respData[i].ip %></td></tr>
-                          <tr><td>Date:</td><td><%= respData[i].date %></td></tr
+						  <tr><td><%=respData[i]._id %></td><td><%=respData[i].ip %></td><td><%=respData[i].date %></td></tr>
 						<% }%>
                       </table>
                     </div>
