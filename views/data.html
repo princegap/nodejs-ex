@@ -224,21 +224,24 @@ pre {
           <section class='col-xs-12 col-sm-6 col-md-6'>
             
 
-                <h2>Request information</h2>
                 <p>Total Records in MongoDb:
                 <% if (pageCountMessage) { %>
                    <span class="code" id="count-value"><%=pageCountMessage%></span>
                    </p>
-                    <div class="code"><h3>Last 30 Records in MongoDb:</h3>
-                      <table style='margin-left: 20px'>
-					  
-                          <tr><td>Type:</td><td><%= respData.ip %></td></tr>
-                          <tr><td>URL:</td><td><%= respData.date %></td></tr>
+				   <p>Last 30 Records in MongoDb:
+                    <div class="code">
+                      <table style='margin-left: 20px
+					    <% respData.forEach(function(item) { %>
+					      <tr><td>Unique Id:</td><td><%= item.id %></td></tr>
+                          <tr><td>IP Address:</td><td><%= item.ip %></td></tr>
+                          <tr><td>Date:</td><td><%= item.date %></td></tr
+						<% });%>
                       </table>
                     </div>
+					</p>
                 <% } else { %>
                    <span class="code" id="count-value">No database configured</span>
-                   </p>
+                   
                 <%} %>
           </section>
         </div>
