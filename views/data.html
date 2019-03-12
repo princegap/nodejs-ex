@@ -230,13 +230,7 @@ pre {
                    </p>
 				   <p>Last 30 Records in MongoDb:
                     <div class="code">
-                      <table style='margin-left: 20px
-					    <% respData.forEach(function(item) { %>
-					      <tr><td>Unique Id:</td><td><%= item.id %></td></tr>
-                          <tr><td>IP Address:</td><td><%= item.ip %></td></tr>
-                          <tr><td>Date:</td><td><%= item.date %></td></tr
-						<% });%>
-                      </table>
+					  Data:  <%=respData%>
                     </div>
 					</p>
                 <% } else { %>
