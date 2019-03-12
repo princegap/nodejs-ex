@@ -110,7 +110,13 @@ app.get('/fetchdata', function (req, res) {
   }
   if (db) {
     var col = db.collection('counts');
-	var responseData = db.collection('counts').find().limit(30).sort({'_id':-1}).toArray();
+	var collectionsData = db.collection('counts').find().limit(30).sort({'_id':-1});
+	responseData = new Object();
+	collectionsData.forEach(function(rowData) {
+	  responseData.id = rowData._id;
+      responseData.ip = rowData.ip;
+	  responseData.date = rowData.date;
+	});
     col.count(function(err, count){
       if (err) {
         console.log('Error running count. Message:\n'+err);
