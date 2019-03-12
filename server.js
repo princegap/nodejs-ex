@@ -110,11 +110,12 @@ app.get('/fetchdata', function (req, res) {
   }
   if (db) {
     var col = db.collection('counts');
+	var responseData = db.collection('counts').find().limit(30).sort({'_id':-1}).toArray();
     col.count(function(err, count){
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('data.html', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('data.html', { pageCountMessage : count, dbInfo: dbDetails, respData: responseData });
     });
   } else {
     res.render('data.html', { pageCountMessage : null});
