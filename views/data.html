@@ -229,14 +229,13 @@ pre {
                    <span class="code" id="count-value"><%=pageCountMessage%></span>
                    </p>
 				   <p>Last 30 Records in MongoDb:
-                    <div class="code">
+
                       <table style='margin-left: 20px>
 						<tr><th>Unique Id</th><th>IP Address</th><th>Date</th>
 					    <% for (var i=0; i < respData.length; i++) { %>
 						  <tr><td><%=respData[i]._id %></td><td><%=respData[i].ip %></td><td><%=respData[i].date %></td></tr>
 						<% }%>
                       </table>
-                    </div>
 					</p>
                 <% } else { %>
                    <span class="code" id="count-value">No database configured</span>
